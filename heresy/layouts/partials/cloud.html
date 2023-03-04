@@ -1,0 +1,30 @@
+<!-- VARIABLE -->
+{{ $key := .key }}
+{{ $values := .values }}
+{{ $len := len .values }}
+
+<!-- CONVERT TAXONOMY DICT TO ARRAY -->
+{{ if eq (printf "%T" $values) "hugolib.Taxonomy" }}
+    {{ $tmp := slice }}
+    {{ range $key, $_ := $values }}
+        {{ $tmp = $tmp | append $key }}
+    {{ end }} 
+    {{ $values = $tmp }}
+{{ end }}
+
+<!-- CONTENT -->
+{{ if gt $len 0 }}   
+    <div class=cloud>
+        {{ range $index, $items := $values }}
+            <!-- LINK -->
+            {{ $url := printf "%s/%s" $key (. | replaceRE ` ` "-" | lower)}}
+            {{ with $.context.Site.GetPage $url }}
+                {{ $title := .Title }}
+                <a href="{{ $url | absURL }}" id="{{ $key }}_{{ $index }}">{{ $title }}</a>
+            {{ end }}
+            
+            <!-- SEPARATING DOT -->
+            {{ if lt $index (sub $len 1) }}&nbsp;&middot;&nbsp;{{ end }}
+        {{ end }}
+    </div>
+{{ end }}

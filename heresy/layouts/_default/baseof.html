@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- LINK -->
+      {{ if not .IsHome }}
+        <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
+      {{ end }}
+
+      <!-- TITLE -->
+      <h1 id="tag_{{ .Title }}">{{ block "title" . }}{{ end }}</h1>
+      {{ if isset .Params "caption" }}
+        <p>{{ .Params.caption | safeHTML }}</p>
+        <hr/>
+      {{ end }}
+
+      <!-- HEADER -->
+      {{ if .IsHome }}
+        {{ if isset .Site.Taxonomies "tags" }}
+          <p>
+            {{ partial "cloud.html" (dict "context" . "key" "tags" "values" .Site.Taxonomies.tags) }}
+          </p>
+        {{ end }}
+        {{ if isset .Site.Taxonomies "people" }}
+          <p>
+            {{ partial "cloud.html" (dict "context" . "key" "people" "values" .Site.Taxonomies.people) }}
+          </p>
+        {{ end }}
+      {{ else }}
+        {{ if isset .Params "tags" }}
+        <p>
+          <hr/>
+          {{ partial "cloud.html" (dict "context" . "key" "tags" "values" .Params.tags) }}
+        </p>
+        {{ end }}
+        {{ if isset .Params "people" }}
+          <hr/>
+          <p>
+            {{ partial "cloud.html" (dict "context" . "key" "people" "values" .Params.people) }}
+          </p>
+        {{ end }}
+      {{ end }}
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      {{ block "main" . }}
+        {{ .Content }}
+      {{ end }}
+    </main>
+
+    
+    <!-- FOOTER -->
+    {{ block "footer" . }}
+    <footer>
+      <hr />
+      {{ .Site.Params.footer | safeHTML }}
+    </footer>
+    {{ end }}
+
+    <!-- MERMAID -->
+    {{ if .Page.Store.Get "hasMermaid" }}
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+      const theme =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: light)").matches
+          ? "default"
+          : "dark";
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: theme,
+      });
+    </script>
+    {{ end }}
+  </body>
+</html>

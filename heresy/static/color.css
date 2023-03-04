@@ -1,0 +1,9 @@
+:root {
+  --foreground-light: 0, 100%, 0%;
+  --background-light: 0, 100%, 100%;
+  --accent-light: 230, 90%, 30%;
+
+  --foreground-dark: 0, 100%, 100%;
+  --background-dark: 196, 100%, 0%;
+  --accent-dark: 230, 90%, 70%;
+}

@@ -1,0 +1,146 @@
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground: var(--foreground-light);
+    --background: var(--background-light);
+    --accent: var(--accent-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: var(--foreground-dark);
+    --background: var(--background-dark);
+    --accent: var(--accent-dark);
+  }
+}
+
+body {
+  padding: 0 10px;
+  font: 1.25rem/1.75 "Comic Mono";
+  margin: 40px auto;
+  max-width: 720px;
+  color: hsla(var(--foreground), 1);
+  background: hsla(var(--background), 1);
+}
+
+::selection {
+  background: hsla(var(--accent), 0.75);
+}
+
+header {
+  text-align: center;
+  padding-top: 2rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  padding-top: 0.62rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: hsla(var(--accent), 1);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media print {
+  body {
+    max-width: none;
+  }
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.4rem;
+}
+
+footer {
+  padding-top: 10px;
+  text-align: center;
+  clear: both;
+}
+
+hr {
+  width: 61.8%;
+  border: 1px solid hsla(var(--foreground), 0.1);
+  margin-top: 24px;
+}
+
+.taglist {
+  text-align: center;
+  clear: both;
+}
+
+.cloud {
+  clear: both;
+  list-style: none;
+  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.cloud li {
+  display: block;
+  padding: 0 0.62rem;
+}
+
+.external:after {
+  font-size: 1rem;
+  content: " [↪]";
+}
+
+.highlight {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 6px;
+  padding: 8px;
+  overflow: auto;
+  border: 1px solid hsla(var(--accent), 0.4);
+}
+
+.highlight pre {
+  margin: 0;
+}
+
+.highlight code {
+  border: none;
+  padding: 0;
+  white-space: pre;
+}
+
+code {
+  font: 0.9rem/1 monospace;
+  padding: 2px;
+  border-radius: 4px;
+  border: 1px solid hsla(var(--accent), 0.4);
+  white-space: nowrap;
+}
+
+.mermaid {
+  text-align: center;
+}
+
+blockquote {
+  font-style: italic;
+  margin: 0;
+  margin-left: 1.618rem;
+  padding-left: 0.618rem;
+  border-left: 4px solid hsla(var(--accent), 0.25);
+}

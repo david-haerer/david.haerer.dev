@@ -1,0 +1,18 @@
+{{ define "title" -}}
+    {{ .Title | title }}
+{{- end }}
+
+{{ define "main" -}}
+    {{ .Content }}
+    <ul>
+    {{ if .Site.Param "sortbytitle" }}
+        {{- range sort .Pages "Title" }}
+            {{ partial "listitem.html" . }}
+        {{ end -}}
+    {{ else }}
+        {{- range .Pages }}
+            {{ partial "listitem.html" . }}
+        {{ end -}}
+    {{ end -}}
+    </ul>
+{{- end }}

@@ -1,0 +1,11 @@
+<ul>
+{{ if .Site.Param "sortbytitle" }}
+    {{- range sort .Site.RegularPages "Title" }}
+        {{ partial "listitem.html" . }}
+    {{ end -}}
+{{ else }}
+    {{- range $.Site.RegularPages }}
+        {{ partial "listitem.html" . }}
+    {{ end -}}
+{{ end -}}
+</ul>
