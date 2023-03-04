@@ -1,0 +1,19 @@
+baseURL = "https://david.härer.dev/"
+languageCode = "en-us"
+title = "David Härer"
+theme = "heresy"
+
+[params]
+    author = "David Härer"
+    footer = "<a href='mailto:david@haerer.dev'>david@haerer.dev</a>"
+    favicon = "/favicon.svg"
+    sortbytitle = true
+
+[markup]
+    [markup.highlight]
+        noClasses = false
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+  people = 'people'
