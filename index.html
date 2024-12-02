@@ -1,1 +1,27 @@
-Hello
+<!doctype html>
+<html>
+  <head>
+    <title>David Härer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://esm.sh/@wooorm/starry-night@3/style/core.css"
+    />
+    <link rel="stylesheet" href="/styles.css" defer />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/assets/manifest.json" />
+  </head>
+  <body id="body" class="nav">
+    <nav id="nav">
+      <header id="header"></header>
+      <ul id="ul"></ul>
+    </nav>
+    <main id="main" class="hidden"></main>
+    <script type="module">
+      import { init } from "/main.js";
+      init();
+    </script>
+  </body>
+</html>
